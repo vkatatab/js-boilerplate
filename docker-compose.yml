@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  db:
+    container_name: boilerplate-database
+    build:
+      context: ./packages/database
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: '!</dev/tcp/db/5432'
+    command: postgres -c 'max_connections=200'
+    networks:
+      - boilerplate-network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  server:
+    container_name: boilerplate-server
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile
+    volumes:
+      - $PWD:/stitches
+    env_file: $PWD/packages/server/.env
+
+volumes:
+  postgres_data:
+
+networks:
+  boilerplate-network:
+    external: true

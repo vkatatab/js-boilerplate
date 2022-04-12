@@ -1,15 +1,16 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:vkatatab/js-boilerplate.git",
   "author": "Vinicius Katata Biondo <vkatatab@gmail.com>",
   "license": "MIT",
   "private": true,
   "workspaces": [
+    "packages/*",
     "apps/*"
   ],
   "scripts": {
+    "types": "yarn turbo run types",
     "dev": "yarn turbo run dev"
   },
   "devDependencies": {

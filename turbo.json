@@ -1,11 +1,15 @@
 {
     "baseBranch": "origin/main",
     "pipeline": {
+      "types": {
+        "dependsOn": ["^types"]
+      },
       "build": {
         "dependsOn": ["^build"],
         "outputs": [".next/**"]
       },
       "dev": {
+        "dependsOn": ["^types"],
         "cache": false
       }
     }

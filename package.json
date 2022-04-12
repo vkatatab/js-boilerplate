@@ -6,8 +6,13 @@
   "author": "Vinicius Katata Biondo <vkatatab@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "start": "docker-compose up --build"
+    "dev": "yarn turbo run dev"
+  },
+  "devDependencies": {
+    "turbo": "^1.2.2"
   }
 }

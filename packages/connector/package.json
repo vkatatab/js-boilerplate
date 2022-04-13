@@ -3,13 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "main": "./index.ts",
-    "module": "./index.ts",
     "types": "typing/index.d.ts",
-    "scripts": {
-      "clear-types": "find . -name \"typing\" -exec rm -rf '{}' +",
-      "build:declarations": "yarn clear-types && tsc --declarationDir typing",
-      "types": "yarn build:declarations"
-    },
     "dependencies": {
       "mongodb": "^4.5.0",
       "mongoose": "^6.2.10"

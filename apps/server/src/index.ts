@@ -1,17 +1,10 @@
-import express from 'express';
-import type { Request, Response } from 'express';
-
-import { mongoDbClient } from '@boilerplate/connector';
+import { ApolloServer, gql } from 'apollo-server';
+import schema from './modules/schema'
 
 const port = process.env.SERVER_PORT;
-const uri = process.env.MONGO_URI;
-const app = express();
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
-})
+const server = new ApolloServer({ schema });
 
-app.listen(port, () => {
-  const mongoConnection = mongoDbClient(uri!);
-  console.log(`Server is running on port ${port}`)
+server.listen({ port: 8080 }).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });

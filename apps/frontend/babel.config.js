@@ -22,6 +22,8 @@ module.exports = (api) => {
         '@babel/preset-typescript',
       ],
       plugins: [
+        'relay',
+        'macros',
         '@babel/plugin-proposal-object-rest-spread',
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-export-default-from',
